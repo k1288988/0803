@@ -1,0 +1,6 @@
+/*SELECT CategoryID, ProductID, ProductName, UnitPrice, UnitPrice - (SELECT AVG (UnitPrice) FROM products 
+    WHERE CategoryID = 1) as diffPrice FROM `products`*/
+
+SELECT CategoryID, (SELECT p.categoryID), ProductID, ProductName, UnitPrice, UnitPrice - (SELECT AVG (UnitPrice)
+ FROM products 
+ WHERE CategoryID = p.categoryID) as diffPrice FROM `products` AS p
