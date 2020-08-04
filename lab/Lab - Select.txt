@@ -189,6 +189,22 @@ SELECT productid, orderid, SUM(quantity) AS total_quantity
  GROUP BY productid, orderid
  WITH ROLLUP
 
+
+
+
+SELECT CategoryID, ProductName, SUM(UnitsInStock) 
+FROM `products` 
+GROUP BY CategoryID, ProductName
+
+SELECT CategoryID, ProductName, SUM(UnitsInStock) 
+FROM `products` 
+GROUP BY CategoryID, ProductName WITH ROLLUP
+
+
+
+
+
+
 /* 410
   請寫一道 Query 列出 products 資料表的以下欄位
   ProductID, ProductName, SupplierID

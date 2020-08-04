@@ -4,3 +4,31 @@
 SELECT CategoryID, (SELECT p.categoryID), ProductID, ProductName, UnitPrice, UnitPrice - (SELECT AVG (UnitPrice)
  FROM products 
  WHERE CategoryID = p.categoryID) as diffPrice FROM `products` AS p
+
+
+SELECT COUNT(*) FROM employees
+
+SELECT COUNT(reportsto)
+ FROM employees
+
+ SELECT * FROM `products` ORDER BY `CategoryID`
+ SELECT AVG(UnitPrice), categoryID FROM `products` GROUP BY `CategoryID`
+ SELECT AVG(UnitPrice) AS AvgPrice, categoryID FROM `products` GROUP BY `CategoryID` HAVING AvgPrice>=30
+
+ SELECT *, SUM(Quantity) FROM `order details` GROUP BY OrderID
+ SELECT * FROM `order details` ORDER BY OrderID, ProductID
+ SELECT OrderID, ProductID, SUM(Quantity) FROM `order details` GROUP BY OrderID, ProductID
+ SELECT OrderID, ProductID, SUM(Quantity) FROM `order details` GROUP BY OrderID, ProductID WITH ROLLUP
+
+
+340
+SELECT CategoryID, SUM(UnitsInStock * UnitPrice) as '庫存成本' FROM `products` GROUP BY CategoryID
+ SELECT CategoryID, UnitsInStock, UnitPrice, SUM(UnitsInStock * UnitPrice) as '庫存成本' FROM `products` GROUP BY CategoryID WITH ROLLUP
+
+350
+ SELECT CategoryID, SUM(UnitsInStock * UnitPrice) as '庫存成本' FROM `products` GROUP BY CategoryID HAVING SUM(UnitsInStock * UnitPrice)>12000
+
+360
+    SELECT OrderID, ProductID, Quantity, SUM(Quantity) FROM `order details` GROUP BY OrderID, ProductID WITH ROLLUP
+
+
