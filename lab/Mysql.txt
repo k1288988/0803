@@ -32,3 +32,44 @@ SELECT CategoryID, SUM(UnitsInStock * UnitPrice) as '庫存成本' FROM `product
     SELECT OrderID, ProductID, Quantity, SUM(Quantity) FROM `order details` GROUP BY OrderID, ProductID WITH ROLLUP
 
 
+SELECT CategoryID, ProductName, SUM(UnitsInStock) 
+FROM `products` 
+GROUP BY CategoryID, ProductName
+
+SELECT CategoryID, ProductName, SUM(UnitsInStock) 
+FROM `products` 
+GROUP BY CategoryID, ProductName WITH ROLLUP
+
+
+410
+SELECT ProductID, ProductName, SupplierID FROM products
+
+420
+SELECT ProductID, ProductName, p.SupplierID, CompanyName, Phone, ContactName 
+FROM products AS p JOIN suppliers AS s
+ON p.SupplierID = s.SupplierID  /*比較p.SupplierID = s.SupplierID
+ORDER By p.SupplierID
+
+
+
+
+SELECT c.CustomerID, CompanyName, p.ProductID, productName 
+FROM customers c 
+JOIN orders o ON o.CustomerID = c.CustomerID
+JOIN `order details` od on od.OrderID = o.OrderID
+JOIN products p on p.ProductID = od.ProductID
+ORDER BY c.CustomerID , p.ProductID
+
+
+
+select * from 
+(select * from orders order by OrderDate desc limit 10 )
+as T ORDER BY OrderDate asc
+
+
+510
+SELECT * FROM orders WHERE OrderID in 
+(
+    SELECT OrderID FROM `order details`
+	WHERE ProductID = 23 and Quantity > 20
+)

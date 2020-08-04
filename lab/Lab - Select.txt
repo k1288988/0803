@@ -224,6 +224,15 @@ select ProductID, ProductName as PN, p.SupplierID, CompanyName, Phone, ContactNa
   order by p.SupplierID
 
 
+
+  SELECT c.CustomerID, CompanyName, p.ProductID, productName 
+FROM customers c 
+JOIN orders o ON o.CustomerID = c.CustomerID
+JOIN `order details` od on od.OrderID = o.OrderID
+JOIN products p on p.ProductID = od.ProductID
+ORDER BY c.CustomerID , p.ProductID
+
+
 /* 430
    我想列出「所有」供應商目前各自提供我們哪些產品資料的對照表,
    目前沒提供我們產品的供應商也要列出
@@ -245,6 +254,13 @@ select s.SupplierID, CompanyName, ProductID, ProductName
 
 
 
+select * from 
+(select * from orders order by OrderDate desc limit 10 )
+as T ORDER BY OrderDate asc
+
+
+
+
 /* 510
   請列出「有買 23 號產品, 而且買超過 20 個」的訂單。
  */ 
@@ -252,6 +268,13 @@ select orderid, customerid from orders
   where orderid in 
   (select orderid from `order details` 
     where productid = 23 and quantity > 20)
+
+
+select o.orderid, productID, quantity, customerid
+ from orders o join `order details` od
+on od.orderid = o.orderid
+where productID = 23 and quantity > 20
+order by orderid, productID
 
 
 /* 520
