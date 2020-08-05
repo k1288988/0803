@@ -73,3 +73,10 @@ SELECT * FROM orders WHERE OrderID in
     SELECT OrderID FROM `order details`
 	WHERE ProductID = 23 and Quantity > 20
 )
+
+
+
+
+select id, tel, from students WHERE tel = 51
+select id, name, tel from students WHERE tel = 51
+create index mix_tel on students(tel,name) 

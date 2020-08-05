@@ -1,0 +1,3 @@
+employee employeeType  一對多
+    多       １   
+

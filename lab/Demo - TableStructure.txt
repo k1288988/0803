@@ -29,3 +29,29 @@ describe friends;
 -- -- 修改資料表結構 - 刪除欄位
 alter table friends
   drop column email;
+
+
+
+set sql_mode = 'traditional';
+
+drop table t1
+CREATE TABLE t1(
+    id int AUTO_INCREMENT not null PRIMARY KEY,
+    data int null,
+    test int not null)
+insert into t1 (data) values (100)
+
+drop table t1
+CREATE TABLE t1(
+    id int not null PRIMARY KEY,
+    data int null)
+
+drop table t1
+CREATE TABLE t1(
+    id int not null PRIMARY KEY,
+    data int null,
+    PRIMARY KEY (id)
+    )
+
+
+
