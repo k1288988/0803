@@ -1,0 +1,103 @@
+drop table t1;
+create table t1 (
+    id int primary key,
+    data int
+);
+
+alter table t1 
+    add constraint chk_data check (data >= 0)
+
+insert into t1 (id , data) values(1,100);
+insert into t1 (id , data) values(-2,1);
+
+select * from t1;
+
+
+use test;
+drop table customer;
+create table customer(
+    customerID int primary key,
+    companyName varchar(20)
+);
+
+insert into customer values
+    (1,'AAA'),(2,'BBB'), (3,'CCC');
+    select * from customer;
+
+
+drop table orders;
+create table orders(
+    orderID int primary key,
+    customerID int
+);
+
+insert into orders values (1,1);
+insert into orders values (2,1);
+insert into orders values (3,2);
+
+select * from orders;
+
+insert into orders values (4,99);
+
+select * from orders; 
+
+
+
+-------------------
+
+
+drop table customer;
+create table customer(
+    customerID int primary key,
+    companyName varchar(20)
+);
+
+/*insert into customer values
+    (1,'AAA'),(2,'BBB'), (3,'CCC');
+    select * from customer;*/
+
+
+drop table orders;
+create table orders(
+    orderID int primary key,
+    customerID int
+);
+
+alter table orders
+    add constraint fk_customer_orders
+        foreign key (customerID) references customer (customerID)
+        on update cascade
+        on delete cascade;
+
+insert into orders values (1,1);
+insert into orders values (2,1);
+insert into orders values (3,2);
+
+select * from orders;
+
+insert into orders values (4,99);
+
+select * from orders;
+
+update customer set customerID = 100 where customerID = 1;
+
+
+alter table customer add constraint uc unique(companyName);
+insert into customer values (4, 'AAA');
+alter table customer drop constraint uc;
+
+create unique index idx_company on customer(companyName);
+insert into customer values (4,'AAA');
+drop index idx_company on customer;
+
+
+
+insert into t1 values (1,'data A');
+insert into t1 values (2, '資料 B');
+select * from t1;
+
+show variables like 'char%'
+set names big5;
+
+insert into t1 values (3,'資料 dsa');
+select * from t1;
