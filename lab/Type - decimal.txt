@@ -5,12 +5,12 @@ drop table Lab;
 create table Lab
 (
   id int auto_increment primary key,
-  data decimal(5, 2) not null
+  data decimal(6, 3) not null
 );
 
-insert into Lab (data) values (1234.12);
-insert into Lab (data) values (1234.125);
+insert into Lab (data) values (123.124);
+insert into Lab (data) values (123.125);
 -- 9999.99:
-insert into Lab (data) values (12345.12);
+insert into Lab (data) values (1234512345678912345679.12);
 
 select * from Lab;

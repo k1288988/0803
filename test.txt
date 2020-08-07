@@ -101,3 +101,7 @@ set names big5;
 
 insert into t1 values (3,'資料 dsa');
 select * from t1;
+
+
+cy0004103@CY0004103 ~ % /Applications/XAMPP/bin/mysqldump -uroot northwind > /Users/cy0004103/Documents/Lab/0803/test_bak.txt
+cy0004103@CY0004103 ~ % /Applications/XAMPP/bin/mysqldump -uroot --databasess northwind > /Users/cy0004103/Documents/Lab/0803/test_bak.txt

@@ -58,3 +58,11 @@ select * from categories;
 -- another way:
 --mysqldump -u root northwind > c:\lab\bak.sql
 
+
+
+
+select categoryId, categoryName 
+  into outfile 'c:\\temp\\lab.txt' 
+  fields terminated by ',' optionally enclosed by '"'
+  lines terminated by '\r\n'
+  from categories;
